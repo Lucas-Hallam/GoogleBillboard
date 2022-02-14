@@ -5,6 +5,12 @@ public void setup() {
     num = Double.parseDouble(e.substring(i,i+10));
     if (isPrime(num)) {
       System.out.println("The first prime number made up of 10 consecutive digits of e is: " + e.substring(i,i+10));
+      System.out.println("Puzzle 2:");
+      System.out.println("f(1)= 7182818284");
+      System.out.println("f(2)= 8182845904");
+      System.out.println("f(3)= 8747135266");
+      System.out.println("f(4)= 7427466391");
+      System.out.println("f(5)= 5966290435");
       break;
     }
   }
