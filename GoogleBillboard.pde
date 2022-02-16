@@ -1,18 +1,21 @@
 public final static String e = "2.7182818284590452353602874713526624977572470936999595749669676277240766303535475945713821785251664274274663919320030599218174135966290435";
 double num;
 public void setup() {
-  for (int i = 2; i < e.length()-12; i++) {
+  int j = 0;
+  for (int i = 2; i < e.length()-9; i++) {
     num = Double.parseDouble(e.substring(i,i+10));
     if (isPrime(num)) {
       System.out.println("Puzzle 1:");
       System.out.println("The first prime number made up of 10 consecutive digits of e is: " + e.substring(i,i+10));
-      System.out.println("Puzzle 2:");
-      System.out.println("f(1)= 7182818284");
-      System.out.println("f(2)= 8182845904");
-      System.out.println("f(3)= 8747135266");
-      System.out.println("f(4)= 7427466391");
-      System.out.println("f(5)= 5966290435");
       break;
+    }
+  }
+  System.out.println("Puzzle 2:");
+  for (int i = 2; i < e.length()-9; i++) {
+    num = Double.parseDouble(e.substring(i,i+10));
+    if (sum49(num) && j <= 5) {
+      System.out.println("f(" + (j+1) + ")= " + e.substring(i,i+10));
+      j++;
     }
   }
 }
@@ -29,8 +32,11 @@ public boolean isPrime(double dNum) {
   }
   return prime;
 }
-
-
-
-
-
+public boolean sum49(double dNum) {
+  int digitSum = 0;
+  for (int i = 0; i < 10; i++) {
+    digitSum += (dNum%Math.pow(10,i+1)-dNum%Math.pow(10,i))/((int) Math.pow(10,i));
+  }
+  boolean ifsum49 = (digitSum == 49);
+  return ifsum49;
+}
